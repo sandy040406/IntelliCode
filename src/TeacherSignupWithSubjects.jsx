@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const TeacherSignupWithSubjects = () => {
-  const [email, setEmail] = useState("");
+  const [rollNo, setRollNo] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [subjects, setSubjects] = useState([]);
@@ -18,7 +18,7 @@ const TeacherSignupWithSubjects = () => {
       alert("Please add at least one subject!");
       return;
     }
-    alert(`Teacher Signup - Email: ${email}, Password: ${password}, Subjects: ${subjects.join(", ")}`);
+    alert(`Teacher Signup - Roll No: ${rollNo}, Subjects: ${subjects.join(", ")}`);
   };
 
   const addSubject = () => {
@@ -39,13 +39,13 @@ const TeacherSignupWithSubjects = () => {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Teacher Roll No</label>
             <input
-              type="email"
-              placeholder="Enter your email"
+              type="text"
+              placeholder="Enter your roll number"
               className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={rollNo}
+              onChange={(e) => setRollNo(e.target.value)}
               required
             />
           </div>

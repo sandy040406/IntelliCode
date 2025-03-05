@@ -1,13 +1,15 @@
-import { useState } from "react";
+
 import { Link } from "react-router-dom";
 
-const Student = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+import { useNavigate } from "react-router-dom";
+
+const Student = ({ setIsLoggedIn }) => {
+  const navigate = useNavigate(); // Hook for navigation
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Student Login - Email: ${email}, Password: ${password}`);
+    setIsLoggedIn(true); // Set login state to true
+    navigate("/student/subjects"); // Navigate to the subjects page
   };
 
   return (
@@ -17,13 +19,11 @@ const Student = () => {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Student Roll No</label>
             <input
-              type="email"
-              placeholder="Enter your email"
+              type="text"
+              placeholder="Enter your roll number"
               className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
@@ -34,8 +34,6 @@ const Student = () => {
               type="password"
               placeholder="Enter your password"
               className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
               required
             />
           </div>
